@@ -1,38 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Peace Iniolu Oba's Tribute Website
+
+This repo contains source code for the tribute website to Peace Iniolu Oba, honoring their life and legacy.
 
 ## Getting Started
 
-First, run the development server:
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You will need to have Node.js and npm (Node Package Manager) installed on your machine.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Installing
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+1. Clone this repository: `git clone https://github.com/huboh/peace-iniolu-oba-tribute.git`
+2. Navigate to the project directory: `cd peace-oba-tribute`
+3. Install the dependencies: `npm install`
+4. Start the development server: `npm run dev`
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Built With
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [PocketBase](https://github.com/pockethq/pocketbase)
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/huboh/peace-iniolu-oba-tribute/blob/main/LICENSE) file for details.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Acknowledgments
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+We would like to extend our sincerest thanks to the following individuals and organizations for their contributions to this project:
 
-## Deploy on Vercel
+- [Mr Gbenga Oba](https://instagram.com/mrgbengaoba?igshid=YmMyMTA2M2Y=) for sharing their knowledge with us, providing insightful feedback and suggestions throughout the development process.
+- [Cindy](https://instagram.com/_cindyway?igshid=YmMyMTA2M2Y=) whose creative vision and direction, combined with their meticulous attention to detail, have transformed our ideas into a truly remarkable reality.
+- [Jabowak Imagery](https://instagram.com/jabbowakimagery?igshid=YmMyMTA2M2Y=) for providing professional images for the project/tribute website.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Authors
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Knowledge - [Twitter](https://twitter.com/from_Godfather) [Github](https://github.com/huboh)
+- Ctechway - [Instagram](https://instagram.com/ctechway?igshid=ZDdkNTZiNTM=)
+
+Thank you all for your support and for helping us make this project a success!
