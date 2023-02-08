@@ -1,0 +1,20 @@
+.image {
+  margin: 0;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border-color-light);
+  display: block;
+
+  &.round-border {
+    border-radius: var(--border-radius);
+  }
+
+  &.styled-image {
+    transition: box-shadow 300ms ease-in-out;
+    box-shadow: 30px 30px 0px var(--primary-color-light);
+
+    &:hover {
+      box-shadow: 20px 20px 0px var(--primary-color-light);
+    }
+  }
+}

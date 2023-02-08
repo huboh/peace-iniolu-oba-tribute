@@ -1,0 +1,27 @@
+.list {
+  width: 100%;
+  color: var(--text-color-grey);
+  list-style-type: none;
+  list-style-position: inside;
+
+  .list-item {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    padding-inline-start: 2rem;
+
+    &::before {
+      left: 0;
+      color: var(--primary-color);
+      content: attr(data-list-icon);
+      position: absolute;
+      line-height: inherit;
+    }
+  }
+
+  &.column-2 {
+    gap: 0.4em;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
