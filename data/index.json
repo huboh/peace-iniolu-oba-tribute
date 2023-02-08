@@ -1,0 +1,37 @@
+{
+  "programmes": [
+    {
+      "date": "10/02/2023",
+      "title": "way keep",
+      "description": "keep track of upcoming events that celebrate Peace's life. This includes events such as burial and wake keeping, where friends and loved ones can come together to pay their final respects and share memories. We believe that these events are an important way for us to come together as a community and remember Peace Iniolu Oba, and we hope that this section will help keep everyone informed and connected as we honor her life",
+      "coverImage": {
+        "alt": "peace iniolu oba singing",
+        "src": "/assets/images/cover.jpg",
+        "width": 6016,
+        "height": 4016
+      }
+    },
+    {
+      "date": "10/02/2023",
+      "title": "funeral",
+      "description": "keep track of upcoming events that celebrate Peace's life. This includes events such as burial and wake keeping, where friends and loved ones can come together to pay their final respects and share memories. We believe that these events are an important way for us to come together as a community and remember Peace Iniolu Oba, and we hope that this section will help keep everyone informed and connected as we honor her life",
+      "coverImage": {
+        "alt": "peace iniolu oba singing",
+        "src": "/assets/images/cover.jpg",
+        "width": 6016,
+        "height": 4016
+      }
+    },
+    {
+      "date": "10/02/2023",
+      "title": "sunday service",
+      "description": "keep track of upcoming events that celebrate Peace's life. This includes events such as burial and wake keeping, where friends and loved ones can come together to pay their final respects and share memories. We believe that these events are an important way for us to come together as a community and remember Peace Iniolu Oba, and we hope that this section will help keep everyone informed and connected as we honor her life",
+      "coverImage": {
+        "alt": "peace iniolu oba singing",
+        "src": "/assets/images/cover.jpg",
+        "width": 6016,
+        "height": 4016
+      }
+    }
+  ]
+}

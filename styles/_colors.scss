@@ -1,0 +1,35 @@
+:root {
+  // text
+  --text-color: rgb(20, 20, 20);
+  --text-color-dark: rgba(12, 12, 12, 0.8);
+  --text-color-grey: rgba(100, 100, 100, 1);
+  --text-color-light: rgba(255, 255, 255, 0.6);
+
+  // bgF
+  --background-color: rgb(239, 239, 247);
+  --background-color-secondary: rgb(255, 255, 255);
+
+  --hover-color: rgba(255, 255, 255, 0.1);
+  --active-color: rgba(255, 255, 255, 0.3);
+  --active-color-pry: rgba(255, 255, 255, 0.5);
+  --active-color-skeleton: rgba(255, 255, 255, 0.2);
+
+  --primary-color: rgba(80, 70, 199, 1);
+  --primary-color-light: rgba(80, 70, 199, 0.2);
+  --primary-color-hover: rgba(80, 70, 199, 0.38);
+  --primary-color-active: rgba(80, 70, 199, 0.48);
+
+  --border-color: rgb(12, 12, 12);
+  --border-color-light: rgba(128, 128, 128, 0.3);
+
+  --box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.3);
+  --box-shadow-hvr: 0px 0px 12px 8px rgba(0, 0, 0, 0.6);
+  --box-shadow-stacked: -20px 0px 12px 4px rgba(0, 0, 0, 0.4);
+  --box-shadow-stacked-light: -20px 0px 12px 4px rgba(0, 0, 0, 0.1);
+  --box-shadow-skeleton: 0px 0px 12px 4px rgba(0, 0, 0, 0.1);
+
+  --error-color: rgba(255, 0, 0, 1);
+  --success-color: rgba(3, 174, 71, 1);
+  --error-color-light: rgb(255, 154, 154);
+  --success-color-light: rgb(190, 255, 216);
+}

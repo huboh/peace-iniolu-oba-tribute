@@ -1,0 +1,58 @@
+main {
+  .home-section {
+    > hgroup {
+      max-width: 55rem;
+      margin-bottom: 2rem;
+
+      .section-header {
+        width: max-content;
+        position: relative;
+        margin-bottom: 1rem;
+
+        &::after {
+          content: "";
+          width: 7rem;
+          height: 170%;
+          display: block;
+          border-radius: 1rem;
+          background-color: var(--primary-color-light);
+          transition: right 200ms ease;
+          clip-path: polygon(
+            21% 0,
+            83% 12%,
+            81% 40%,
+            94% 78%,
+            68% 100%,
+            34% 80%,
+            6% 78%,
+            0% 43%,
+            14% 30%
+          );
+
+          right: -10%;
+          bottom: -30%;
+          z-index: -2;
+          position: absolute;
+        }
+
+        &:hover::after {
+          right: -12%;
+        }
+      }
+    }
+  }
+
+  .programme-list {
+    flex-flow: column nowrap !important;
+  }
+
+  @media (min-width: 760px) {
+    .programme-list {
+      flex-flow: row nowrap !important;
+
+      .programme {
+        max-width: 100%;
+      }
+    }
+  }
+}

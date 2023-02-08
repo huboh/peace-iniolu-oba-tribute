@@ -18,6 +18,19 @@ export interface Programme {
   description: string;
 }
 
+export interface Tribute {
+  id: string;
+  name: string;
+  email: string;
+  title: string;
+  message: string;
+  updated: string;
+  created: string;
+  displayImage: string;
+  tributeImage?: string;
+  relationShip: string;
+}
+
 export interface SiteData {
   programmes: Programme[];
 }
