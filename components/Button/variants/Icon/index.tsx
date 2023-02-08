@@ -1,8 +1,8 @@
 import styles from "../../styles/icon-button.module.scss";
 
 import { FC } from "react";
-import { ButtonProps } from "../../";
-import { useClassString } from "../../../../hooks";
+import { ButtonProps } from "../../types";
+import { useClassString } from "@/hooks";
 
 export interface IconProps extends Pick<ButtonProps, "icon" | "type" | "style" | "onClick" | "className"> {
   title?: string;

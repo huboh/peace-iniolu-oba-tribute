@@ -3,7 +3,7 @@ import { BiLoaderCircle } from 'react-icons/bi';
 
 // hooks
 import { useState } from "react";
-import { useClassString } from "../../hooks";
+import { useClassString } from "@/hooks";
 
 // components
 import Icon from "./variants/Icon";

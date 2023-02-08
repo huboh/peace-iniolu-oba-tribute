@@ -3,7 +3,7 @@ import linkStyles from '../../styles/button-link.module.scss';
 
 import { FC, ReactNode } from 'react';
 import { ButtonStyle } from '../../types';
-import { useClassString } from '../../../../hooks';
+import { useClassString } from '@/hooks';
 import { LinkProps as NextLinkProps, default as NextLink } from "next/link";
 
 export interface LinkProps extends NextLinkProps {
