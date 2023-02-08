@@ -1,0 +1,30 @@
+.error-screen-wrapper {
+  --spacing: 1.5rem;
+
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+
+  gap: var(--spacing);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column nowrap;
+
+  .error-icon {
+    font-size: 3rem;
+  }
+
+  .message-wrapper {
+    max-width: 40rem;
+
+    .title {
+      font-size: 1.35rem;
+    }
+
+    .message {
+      font-size: 0.95rem;
+      margin-top: var(--spacing);
+    }
+  }
+}

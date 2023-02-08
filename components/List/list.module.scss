@@ -1,0 +1,29 @@
+.list {
+  width: 100%;
+  list-style: none;
+
+  gap: 1em;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  &.vertical {
+    flex-flow: column nowrap;
+  }
+
+  &.horizontal {
+    flex-flow: row nowrap;
+  }
+
+  &.grid {
+    gap: 1.5rem;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, max-content));
+  }
+
+  .list-item {
+    margin: 0;
+    padding: 0;
+  }
+}
