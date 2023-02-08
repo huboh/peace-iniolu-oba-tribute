@@ -1,0 +1,138 @@
+.button {
+  border: none;
+  outline: none;
+  user-select: none;
+  width: max-content;
+  height: 2.6rem;
+  padding: 0.5em 1.2em;
+  border-radius: var(--border-radius);
+
+  color: var(--primary-color);
+  background-color: var(--primary-color-light);
+  transition: background-color 0.2s, transform 0.2s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .text-wrapper {
+    margin: 0;
+    display: block;
+    white-space: nowrap;
+  }
+
+  .icon-wrapper {
+    gap: 1em;
+    width: 1.3rem;
+    margin: 0;
+    display: block;
+
+    & > * {
+      width: 100%;
+      height: 100%;
+      stroke: var(--primary-color);
+    }
+  }
+
+  //
+  // style variations start
+  //
+
+  &.transparent {
+    color: var(--primary-color);
+    background-color: transparent;
+
+    .icon-wrapper {
+      svg {
+        stroke: var(--primary-color);
+      }
+    }
+
+    &:hover {
+      background-color: var(--primary-color-light);
+    }
+
+    &:focus {
+      background-color: var(--primary-color-light);
+    }
+
+    &:disabled {
+      cursor: wait;
+      background-color: var(--primary-color-light);
+
+      &:hover {
+        background-color: var(--primary-color-light);
+      }
+    }
+  }
+
+  &.see-through {
+    color: var(--primary-color);
+    background-color: var(--primary-color-light);
+
+    .icon-wrapper {
+      & > * {
+        fill: var(--primary-color);
+      }
+    }
+
+    &:hover {
+      background-color: var(--primary-color-hover);
+    }
+
+    &:focus {
+      background-color: var(--primary-color-hover);
+    }
+
+    &:disabled {
+      cursor: wait;
+      background-color: var(--primary-color-light);
+
+      &:hover {
+        background-color: var(--primary-color-light);
+      }
+    }
+  }
+
+  //
+  // style variations end
+  //
+
+  .button-spinner {
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    display: block;
+    font-size: 1.4em;
+    transform-origin: center center;
+    animation: rotate 1.3s linear 0s infinite normal forwards;
+  }
+
+  &:disabled {
+    cursor: wait;
+    background-color: var(--primary-color-dark);
+
+    &:hover {
+      background-color: var(--primary-color-dark);
+    }
+  }
+
+  &:hover {
+    background-color: var(--primary-color-hover);
+  }
+
+  &:focus {
+    background-color: var(--primary-color-hover);
+  }
+
+  &:active {
+    background-color: var(--primary-color-active);
+  }
+}
