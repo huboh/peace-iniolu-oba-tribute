@@ -1,0 +1,20 @@
+.form-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .cta {
+    border: none;
+    outline: none;
+    padding: 1rem 1.8rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-top: 2rem;
+    background-color: var(--primary-color);
+  }
+
+  .form {
+    width: 100%;
+  }
+}

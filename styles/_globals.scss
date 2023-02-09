@@ -1,3 +1,98 @@
 ::selection {
   background-color: var(--primary-color-hover);
 }
+
+.tribute-form {
+  width: 80%;
+  max-width: 35rem;
+  max-height: 90%;
+  overflow-y: scroll;
+  padding: 2rem;
+  border-radius: 5px;
+  background-color: var(--background-color-secondary);
+
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .form-field {
+    width: 100%;
+
+    input {
+      padding: 0.8rem;
+    }
+  }
+
+  .required {
+    color: red;
+  }
+
+  .error {
+    color: var(--error-color);
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 0.88rem;
+  }
+
+  label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    font-family: inherit;
+    margin-bottom: 0.2rem;
+    color: var(--text-color-dark);
+
+    &:not(:first-of-type) {
+      margin-top: 1rem;
+    }
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    border: 1px solid var(--border-color-light);
+    min-width: 100%;
+    max-width: 100%;
+    padding: 0.8rem 1rem;
+    display: block;
+    font-weight: 500;
+    font-family: inherit;
+    border-radius: 5px;
+    // margin-bottom: 1rem;
+
+    &::placeholder {
+      color: var(--text-color-grey);
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+  }
+
+  .buttons {
+    margin-left: auto;
+    margin-top: 2rem;
+
+    gap: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    [type="submit"] {
+      color: #fff;
+      background-color: var(--primary-color);
+    }
+  }
+
+  @media screen and (min-width: 760px) {
+    .tribute-form {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  }
+}

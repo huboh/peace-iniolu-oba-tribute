@@ -1,13 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  redirects: async () => ([
-    {
-      source: "/",
-      permanent: false,
-      destination: "/tributes",
-    }
-  ]),
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'http://127.0.0.1:8090/api/:path*'
+      }
+    ];
+  },
   images: {
     remotePatterns: [
       {
