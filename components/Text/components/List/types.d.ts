@@ -1,10 +1,9 @@
 import { ReactNode } from "react";
 
-export interface ListProps<T> {
-  key_?: T extends object ? keyof T : never;
-  column?: "column-2";
-  listItems: T[];
-  listIcon?: string;
+export interface ListProps {
+  listItems: (string | ReactNode)[];
+  children?: ReactNode;
   className?: string;
-  itemComponent: (item: T) => ReactElement;
+  column?: "column-2";
+  listIcon?: string;
 }
