@@ -16,6 +16,12 @@ const nextConfig = {
         protocol: 'http',
         hostname: '127.0.0.1',
         pathname: '/api/files/**',
+      },
+      {
+        port: '',
+        protocol: 'https',
+        hostname: 'peace-inioluola-tribute.fly.dev',
+        pathname: '/api/files/**',
       }
     ]
   },
