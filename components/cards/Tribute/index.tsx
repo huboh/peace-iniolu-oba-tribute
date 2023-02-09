@@ -18,12 +18,12 @@ const Tribute: FC<TributeProps> = (props) => {
   return (
     <div className={ className }>
       { tribute.tributeImage && (
-        <Image
+        <img
           width={ 500 }
           height={ 500 }
           alt={ tribute.name }
           src={ tribute.tributeImage }
-          className={ styles["tribute-image"] }
+          className={ `${styles["tribute-image"]} img` }
         />
       ) }
 
@@ -31,12 +31,12 @@ const Tribute: FC<TributeProps> = (props) => {
       <Text.Paragraph text={ tribute.message } className={ styles["message"] } />
 
       <div className={ styles["message-profile"] }>
-        <Image
+        <img
           width={ 500 }
           height={ 500 }
           alt={ tribute.name }
           src={ tribute.displayImage }
-          className={ styles["display-image"] }
+          className={ `${styles["display-image"]} img` }
         />
         <div>
           <Text.Header text={ tribute.name } className={ styles["name"] } />

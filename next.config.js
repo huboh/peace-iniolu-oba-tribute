@@ -10,6 +10,9 @@ const nextConfig = {
     ];
   },
   images: {
+    domains: [
+      'peace-inioluola-tribute.fly.dev'
+    ],
     remotePatterns: [
       {
         port: '8090',
