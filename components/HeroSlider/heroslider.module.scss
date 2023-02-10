@@ -1,0 +1,7 @@
+.slider {
+  div:first-of-type {
+    max-height: 100vh;
+    max-height: 100dvh;
+    transition: max-height 300ms ease;
+  }
+}

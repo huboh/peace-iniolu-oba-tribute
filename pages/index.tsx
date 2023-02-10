@@ -3,6 +3,7 @@ import styles from "@/styles/home.module.scss";
 import { NextPage } from "next";
 import { PageProps } from "@/types";
 import { default as PocketBase } from "pocketbase";
+import { PT_Serif, Dancing_Script } from "@next/font/google";
 import { normalizeTribute, getSliderImagesPaths } from "@/lib";
 import { default as Masonry, ResponsiveMasonry } from "react-responsive-masonry";
 
@@ -16,6 +17,44 @@ import Tribute from "@/components/cards/Tribute";
 import HeroSlider from '@/components/HeroSlider';
 
 interface TributesPageProps extends PageProps, Omit<Awaited<ReturnType<typeof getServerSideProps>>["props"], ""> { }
+
+const ptSerif = PT_Serif({
+  style: "normal",
+  preload: true,
+  display: "swap",
+  weight: [
+    "400",
+    "700",
+  ],
+  subsets: [
+    "latin"
+  ],
+  fallback: [
+    "Roboto",
+    "Oxygen",
+    "Ubuntu"
+  ],
+});
+
+const dancingScript = Dancing_Script({
+  style: "normal",
+  preload: true,
+  display: "swap",
+  weight: [
+    "400",
+    "500",
+    "600",
+    "700",
+  ],
+  subsets: [
+    "latin"
+  ],
+  fallback: [
+    "Roboto",
+    "Oxygen",
+    "Ubuntu"
+  ],
+});
 
 const getServerSideProps = async () => {
   const images = await getSliderImagesPaths();
@@ -36,7 +75,7 @@ const TributesPage: NextPage<TributesPageProps> = (props) => {
         title="Peace Iniolu Oba's Tribute"
       />
       <main>
-        <HeroSlider imagesPaths={ props.images }>
+        <HeroSlider imagesPaths={ props.images } className={ "sfsd" }>
           <Section className={ styles["hero"] }>
             <div className={ styles["form"] }>
               <Text.Paragraph className={ styles["notice"] }>
@@ -46,8 +85,16 @@ const TributesPage: NextPage<TributesPageProps> = (props) => {
             </div>
 
             <hgroup>
-              <Text.Header.H1 text="Peace Iniolu Oba." />
-              <Text.Header.H2 text="1993 - 2023" style={ { fontWeight: 600 } } />
+              <Text.Header.H1
+                text="Peace Iniolu Oba."
+                className={ ptSerif.className }
+              />
+
+              <Text.Header.H2
+                size={ "large" }
+                text={ "1993 - 2023" }
+                className={ `${styles["lifespan"]} ${dancingScript.className}` }
+              />
             </hgroup>
           </Section>
         </HeroSlider>

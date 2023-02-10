@@ -1,12 +1,12 @@
 import { AppType } from "next/app";
-import { Open_Sans } from "@next/font/google";
+import { Poppins } from "@next/font/google";
 import { StrictMode } from "react";
 
 import "@/styles/main.scss";
 import useClassString from "@/hooks/useClassString";
 import ErrorBoundary from "@/components/ErrorBoundary";
 
-const font = Open_Sans({
+const poppins = Poppins({
   style: "normal",
   preload: true,
   display: "swap",
@@ -31,7 +31,7 @@ const font = Open_Sans({
 const App: AppType = (props) => {
   const Component = props.Component;
   const pageProps = props.pageProps;
-  const className = useClassString(font.className);
+  const className = useClassString(poppins.className);
 
   return (
     <StrictMode>

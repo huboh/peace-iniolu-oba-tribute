@@ -1,5 +1,6 @@
 import styles from "./hero-form.module.scss";
 
+import { Poppins } from "@next/font/google";
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
 import { useClassString } from "../../hooks";
@@ -13,6 +14,28 @@ import Button from "@/components/Button";
 interface HeroFormProps {
   className?: string;
 }
+
+const poppins = Poppins({
+  style: "normal",
+  preload: true,
+  display: "swap",
+  weight: [
+    "300",
+    "400",
+    "500",
+    "600",
+    "700",
+    "800",
+  ],
+  subsets: [
+    "latin"
+  ],
+  fallback: [
+    "Roboto",
+    "Oxygen",
+    "Ubuntu"
+  ],
+});
 
 const FILE_SIZE = 10485760;
 const SUPPORTED_FORMATS = [
@@ -107,7 +130,7 @@ const HeroForm: FC<HeroFormProps> = (props) => {
 
   return (
     <section className={ className }>
-      <button onClick={ () => setIsOpen(true) } className={ styles["cta"] }>
+      <button onClick={ () => setIsOpen(true) } className={ `${styles["cta"]} ${poppins.className}` }>
         write a tribute
       </button>
 
@@ -116,7 +139,7 @@ const HeroForm: FC<HeroFormProps> = (props) => {
         onClose={ () => setIsOpen(false) }
         className={ styles["form"] }
       >
-        <div>
+        <div className={ poppins.className }>
           <Formik
             onSubmit={ onSubmit }
             validationSchema={ TributeSchema }
@@ -128,36 +151,97 @@ const HeroForm: FC<HeroFormProps> = (props) => {
                   <Text.Header.H1>Write a Tribute</Text.Header.H1>
 
                   <label htmlFor="name">Name <span className="required">*</span></label>
-                  <Field id="name" name="name" type="text" placeholder="David Itunu" />
-                  <ErrorMessage name="name" render={ (message) => <span className="error">{ message }</span> } />
+                  <Field
+                    id="name"
+                    name="name"
+                    type="text"
+                    placeholder="John Doe"
+                  />
+                  <ErrorMessage
+                    name={ "name" }
+                    render={ (message) => <span className="error">{ message }</span> }
+                  />
 
                   <label htmlFor="email">Email</label>
-                  <Field id="email" name="email" type="text" placeholder="davidItunu16@gmail.com" />
-                  <ErrorMessage name="email" render={ (message) => <span className="error">{ message }</span> } />
+                  <Field
+                    id="email"
+                    name="email"
+                    type="text"
+                    placeholder="davidItunu16@gmail.com"
+                  />
+                  <ErrorMessage
+                    name="email"
+                    render={ (message) => <span className="error">{ message }</span> }
+                  />
 
                   <label htmlFor="phone">Phone Number</label>
-                  <Field id="phone" name="phoneNumber" type="text" placeholder="09012334231" />
-                  <ErrorMessage name="phoneNumber" render={ (message) => <span className="error">{ message }</span> } />
+                  <Field
+                    id="phone"
+                    name="phoneNumber"
+                    type="text"
+                    placeholder="09012334231"
+                  />
+                  <ErrorMessage
+                    name="phoneNumber"
+                    render={ (message) => <span className="error">{ message }</span> }
+                  />
 
                   <label htmlFor="relationship">Relationship <span className="required">*</span></label>
-                  <Field id="relationship" name="relationShip" type="text" placeholder="friend" />
-                  <ErrorMessage name="relationShip" render={ (message) => <span className="error">{ message }</span> } />
+                  <Field
+                    id="relationship"
+                    name="relationShip"
+                    type="text"
+                    placeholder="friend"
+                  />
+                  <ErrorMessage
+                    name="relationShip"
+                    render={ (message) => <span className="error">{ message }</span> }
+                  />
 
-                  <label htmlFor="title">Title <span className="required">*</span></label>
-                  <Field id="title" name="title" placeholder="tribute title" />
-                  <ErrorMessage name="title" render={ (message) => <span className="error">{ message }</span> } />
+                  <label htmlFor="title">Tribute Title <span className="required">*</span></label>
+                  <Field
+                    id="title"
+                    name="title" placeholder="In Memory of Peace Iniolu Oba"
+                  />
+                  <ErrorMessage
+                    name="title"
+                    render={ (message) => <span className="error">{ message }</span> }
+                  />
 
-                  <label htmlFor="message">Message <span className="required">*</span></label>
-                  <Field id="message" name="message" as="textarea" placeholder="tribute message" />
-                  <ErrorMessage name="message" render={ (message) => <span className="error">{ message }</span> } />
+                  <label htmlFor="message">Tribute Message <span className="required">*</span></label>
+                  <Field
+                    id="message"
+                    name="message"
+                    as="textarea" placeholder="tribute message"
+                  />
+                  <ErrorMessage
+                    name="message"
+                    render={ (message) => <span className="error">{ message }</span> }
+                  />
 
                   <label htmlFor="display-image">Profile Picture <span className="required">*</span></label>
-                  <input id="display-image" name="displayImage" type="file" onChange={ (event) => setFieldValue("displayImage", (event as any)?.currentTarget?.files[0]) } />
-                  <ErrorMessage name="displayImage" render={ (message) => <span className="error">{ message }</span> } />
+                  <input
+                    id="display-image"
+                    name="displayImage"
+                    type="file"
+                    onChange={ (event) => setFieldValue("displayImage", (event as any)?.currentTarget?.files[0]) }
+                  />
+                  <ErrorMessage
+                    name="displayImage"
+                    render={ (message) => <span className="error">{ message }</span> }
+                  />
 
                   <label htmlFor="display-image">Tribute Image <span className="required">*</span></label>
-                  <input id="display-image" name="tributeImage" type="file" onChange={ (event) => setFieldValue("tributeImage", (event as any).currentTarget.files[0]) } />
-                  <ErrorMessage name="tributeImage" render={ (message) => <span className="error">{ message }</span> } />
+                  <input
+                    id="display-image"
+                    name="tributeImage"
+                    type="file"
+                    onChange={ (event) => setFieldValue("tributeImage", (event as any).currentTarget.files[0]) }
+                  />
+                  <ErrorMessage
+                    name="tributeImage"
+                    render={ (message) => <span className="error">{ message }</span> }
+                  />
 
                   <div className="buttons">
                     <Button label="close" onClick={ () => setIsOpen(false) } disabled={ isSubmitting } />
