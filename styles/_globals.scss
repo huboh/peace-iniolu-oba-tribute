@@ -3,81 +3,93 @@
 }
 
 .tribute-form {
-  width: 85%;
-  max-width: 35rem;
-  max-height: 90%;
-  overflow-y: scroll;
-  padding: 1.5rem;
-  padding-top: 0;
-  border-radius: 5px;
-  background-color: var(--background-color-secondary);
+  --padding: 1.5rem;
 
   top: 50%;
   left: 50%;
+  width: 90%;
+  max-width: 35rem;
+  max-height: 90%;
   position: absolute;
+  border-radius: 5px;
   transform: translate(-50%, -50%);
+  background-color: var(--background-color-secondary);
 
-  h1 {
-    font-size: 2rem;
-    text-align: center;
-    margin-block: 2rem;
-  }
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
 
-  .form-field {
+  .controls {
     width: 100%;
+    height: 100%;
+    padding: var(--padding);
+    overflow-y: scroll;
 
-    input {
-      padding: 0.8rem;
+    .form-heading {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: var(--padding);
     }
-  }
 
-  .required {
-    color: red;
-  }
-
-  .error {
-    color: var(--error-color);
-    display: block;
-    margin-top: 0.2rem;
-    font-size: 0.88rem;
-  }
-
-  label {
-    width: max-content;
-    display: block;
-    font-weight: 600;
-    font-size: 0.9rem;
-    font-family: inherit;
-    margin-bottom: 0.2rem;
-    color: var(--text-color-dark);
-
-    &:not(:first-of-type) {
-      margin-top: 1rem;
+    .required {
+      color: red;
     }
-  }
 
-  input,
-  textarea {
-    width: 100%;
-    border: 1px solid var(--border-color-light);
-    min-width: 100%;
-    max-width: 100%;
-    padding: 0.8rem 1rem;
-    display: block;
-    font-size: 0.9rem;
-    font-weight: 500;
-    font-family: inherit;
-    border-radius: 5px;
+    .error {
+      color: var(--error-color);
+      display: block;
+      margin-top: 0.2rem;
+      font-size: 0.88rem;
+    }
 
-    &::placeholder {
-      color: var(--text-color-placeholder);
+    label {
+      width: max-content;
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      font-family: inherit;
+      margin-bottom: 0.2rem;
+      color: var(--text-color-dark);
+
+      &:not(:first-of-type) {
+        margin-top: 1rem;
+      }
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--border-color-light);
+      min-width: 100%;
+      max-width: 100%;
+      padding: 0.8rem 1rem;
+      display: block;
+      font-size: 0.9rem;
       font-weight: 500;
+      font-family: inherit;
+      border-radius: 5px;
+
+      &::placeholder {
+        color: var(--text-color-placeholder);
+        font-weight: 500;
+      }
+    }
+
+    .form-field {
+      width: 100%;
+
+      input {
+        padding: 0.8rem;
+      }
     }
   }
 
   .buttons {
-    margin-top: 2rem;
-    margin-left: auto;
+    width: 100%;
+    height: max-content;
+    padding: var(--padding);
+    border-top: 1px solid var(--border-color-light);
 
     gap: 1rem;
     display: flex;
@@ -95,11 +107,6 @@
   }
 
   @media screen and (min-width: 760px) {
-    padding: 2.5rem;
-    padding-top: 0;
-
-    h1 {
-      font-size: 2rem;
-    }
+    --padding: 1.5rem;
   }
 }
