@@ -15,4 +15,5 @@ export interface SeoProps extends NextSeoProps {
   ogWidth?: number;
   ogHeight?: number;
   ogLocale?: string;
+  ogImageType?: string;
 }

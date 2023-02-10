@@ -85,6 +85,8 @@ const Seo: FC<SeoProps> = (props) => {
             url: props.ogImage!,
             width: props.ogWidth ?? 850,
             height: props.ogHeight ?? 650,
+            secureUrl: props.ogImage!,
+            type: props.ogImageType
           }
         ]
       } }
@@ -103,8 +105,9 @@ Seo.defaultProps = {
   ogType: "website",
   ogWidth: 6016,
   ogHeight: 4016,
-  ogImage: "/assets/images/cover.jpg",
+  ogImage: `${process.env.NEXT_PUBLIC_DOMAIN}/assets/images/cover.jpg`,
   ogLocale: "en_IE",
+  ogImageType: "image/jpg",
 };
 
 export {
