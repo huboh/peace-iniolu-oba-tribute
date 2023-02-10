@@ -53,7 +53,7 @@ const TributeSchema = Yup.object().shape({
 
   title: Yup.string()
     .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
+    .max(250, 'Too Long!')
     .required('title is required'),
 
   email: Yup.string()
