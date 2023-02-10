@@ -73,7 +73,7 @@ const TributesPage: NextPage<TributesPageProps> = (props) => {
         title="Peace Iniolu Oba's Tribute"
       />
       <main>
-        <HeroSlider imagesPaths={ props.images } className={ "sfsd" }>
+        <HeroSlider imagesPaths={ props.images }>
           <Section className={ styles["hero"] }>
             <div className={ styles["form"] }>
               <Text.Paragraph className={ styles["notice"] }>

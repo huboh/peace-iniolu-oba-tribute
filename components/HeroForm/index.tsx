@@ -1,5 +1,6 @@
 import styles from "./hero-form.module.scss";
 
+import { toast } from "react-hot-toast";
 import { Poppins } from "@next/font/google";
 import { useRouter } from "next/navigation";
 import { FC, useState } from "react";
@@ -133,6 +134,7 @@ const HeroForm: FC<HeroFormProps> = (props) => {
 
   const onSubmit = async (values: (typeof initialValues), helpers: FormikHelpers<(typeof initialValues)>) => {
     const formData = new FormData();
+    const toastId = toast.loading('submitting tribute, please wait.');
     const endPoint = `${process.env.NEXT_PUBLIC_POCKET_BASE_API}/api/collections/tributes/records`;
     const submitTribute = (data: FormData) => fetch(endPoint, { body: data, method: "POST", "Content-Type": 'multipart/form-data' } as any);
 
@@ -147,17 +149,35 @@ const HeroForm: FC<HeroFormProps> = (props) => {
       if (!response.ok) {
         const fields = Object.keys(pocketBaseResponse.data);
         const errors = fields.reduce((errors, key) => ({ ...errors, [key]: pocketBaseResponse.data[key].message }), {});
-        return helpers.setErrors(errors);
+
+        helpers.setErrors(errors);
+
+        return toast.error("error submitting tribute", {
+          id: toastId,
+          duration: 5000
+        });
       }
 
       setIsOpen(false);
-      alert("tribute submitted successfully");
-      router.refresh();
+
+      const duration = 4000;
+      const successId = toast.success("tribute submitted successfully", {
+        id: toastId,
+        duration: duration
+      });
+
+      setTimeout(() => { toast('refreshing page', { id: successId }); router.refresh(); },
+        duration
+      );
 
     } catch (error) {
-      alert("encountered an unexpected error");
+      toast.error("unexpected error submitting tribute", {
+        id: toastId,
+        duration: 5000
+      });
     }
   };
+
 
   return (
     <section className={ className }>
@@ -179,116 +199,115 @@ const HeroForm: FC<HeroFormProps> = (props) => {
             { ({ setFieldValue, isSubmitting }) => {
               return (
                 <Form className="tribute-form">
-                  <Text.Header.H1>Write a Tribute</Text.Header.H1>
+                  <section className="controls">
 
-                  <label htmlFor="name">
-                    Name <span className="required">*</span>
-                  </label>
-                  <Field
-                    id="name"
-                    name="name"
-                    type="text"
-                    placeholder="John Doe"
-                  />
-                  <ErrorMessage
-                    name={ "name" }
-                    render={ (message) => <span className="error">{ message }</span> }
-                  />
+                    <Text.Header.H1
+                      text="write a tribute"
+                      className="form-heading"
+                    />
 
-                  <label htmlFor="email">
-                    Email Address
-                  </label>
-                  <Field
-                    id="email"
-                    name="email"
-                    type="text"
-                    placeholder="johndoe6@gmail.com"
-                  />
-                  <ErrorMessage
-                    name="email"
-                    render={ (message) => <span className="error">{ message }</span> }
-                  />
-
-                  <label htmlFor="phone">
-                    Phone Number <span className="required">*</span>
-                  </label>
-                  <Field
-                    id="phone"
-                    name="phoneNumber"
-                    type="text"
-                    placeholder="09012334231"
-                  />
-                  <ErrorMessage
-                    name="phoneNumber"
-                    render={ (message) => <span className="error">{ message }</span> }
-                  />
-
-                  <label htmlFor="relationship">
-                    Relationship <span className="required">*</span>
-                  </label>
-                  <Field
-                    id="relationship"
-                    name="relationShip"
-                    type="text"
-                    placeholder="friend"
-                  />
-                  <ErrorMessage
-                    name="relationShip"
-                    render={ (message) => <span className="error">{ message }</span> }
-                  />
-
-                  <label htmlFor="display-image">
-                    Profile Picture <span className="required">*</span>
-                  </label>
-                  <input
-                    id="display-image"
-                    name="displayImage"
-                    type="file"
-                    onChange={ (event) => setFieldValue("displayImage", (event as any)?.currentTarget?.files[0]) }
-                  />
-                  <ErrorMessage
-                    name="displayImage"
-                    render={ (message) => <span className="error">{ message }</span> }
-                  />
-
-                  <label htmlFor="title">
-                    Tribute Header <span className="required">*</span>
-                  </label>
-                  <Field
-                    id="title"
-                    name="title" placeholder="In Memory of Peace Iniolu Oba"
-                  />
-                  <ErrorMessage
-                    name="title"
-                    render={ (message) => <span className="error">{ message }</span> }
-                  />
-
-                  <label htmlFor="message">
-                    Tribute Message <span className="required">*</span>
-                  </label>
-                  <Field
-                    id="message"
-                    name="message"
-                    as="textarea" placeholder="tribute message"
-                  />
-                  <ErrorMessage
-                    name="message"
-                    render={ (message) => <span className="error">{ message }</span> }
-                  />
-
-                  <label htmlFor="display-image">
-                    Tribute Image
-                  </label>
-                  <input
-                    id="display-image"
-                    name="tributeImage"
-                    type="file"
-                    onChange={ (event) => setFieldValue("tributeImage", (event as any).currentTarget.files[0]) }
-                  />
-                  <ErrorMessage
-                    name="tributeImage"
-                    render={ (message) => <span className="error">{ message }</span> }
-                  />
+                    <label htmlFor="name">
+                      Name <span className="required">*</span>
+                    </label>
+                    <Field
+                      id="name"
+                      name="name"
+                      type="text"
+                      placeholder="John Doe"
+                    />
+                    <ErrorMessage
+                      name={ "name" }
+                      render={ (message) => <span className="error">{ message }</span> }
+                    />
+                    <label htmlFor="email">
+                      Email Address
+                    </label>
+                    <Field
+                      id="email"
+                      name="email"
+                      type="text"
+                      placeholder="johndoe6@gmail.com"
+                    />
+                    <ErrorMessage
+                      name="email"
+                      render={ (message) => <span className="error">{ message }</span> }
+                    />
+                    <label htmlFor="phone">
+                      Phone Number <span className="required">*</span>
+                    </label>
+                    <Field
+                      id="phone"
+                      name="phoneNumber"
+                      type="text"
+                      placeholder="09012334231"
+                    />
+                    <ErrorMessage
+                      name="phoneNumber"
+                      render={ (message) => <span className="error">{ message }</span> }
+                    />
+                    <label htmlFor="relationship">
+                      Relationship <span className="required">*</span>
+                    </label>
+                    <Field
+                      id="relationship"
+                      name="relationShip"
+                      type="text"
+                      placeholder="friend"
+                    />
+                    <ErrorMessage
+                      name="relationShip"
+                      render={ (message) => <span className="error">{ message }</span> }
+                    />
+                    <label htmlFor="display-image">
+                      Profile Picture <span className="required">*</span>
+                    </label>
+                    <input
+                      id="display-image"
+                      name="displayImage"
+                      type="file"
+                      onChange={ (event) => setFieldValue("displayImage", (event as any)?.currentTarget?.files[0]) }
+                    />
+                    <ErrorMessage
+                      name="displayImage"
+                      render={ (message) => <span className="error">{ message }</span> }
+                    />
+                    <label htmlFor="title">
+                      Tribute Header <span className="required">*</span>
+                    </label>
+                    <Field
+                      id="title"
+                      name="title" placeholder="In Memory of Peace Iniolu Oba"
+                    />
+                    <ErrorMessage
+                      name="title"
+                      render={ (message) => <span className="error">{ message }</span> }
+                    />
+                    <label htmlFor="message">
+                      Tribute Message <span className="required">*</span>
+                    </label>
+                    <Field
+                      id="message"
+                      name="message"
+                      as="textarea" placeholder="tribute message"
+                    />
+                    <ErrorMessage
+                      name="message"
+                      render={ (message) => <span className="error">{ message }</span> }
+                    />
+                    <label htmlFor="display-image">
+                      Tribute Image
+                    </label>
+                    <input
+                      id="display-image"
+                      name="tributeImage"
+                      type="file"
+                      onChange={ (event) => setFieldValue("tributeImage", (event as any).currentTarget.files[0]) }
+                    />
+                    <ErrorMessage
+                      name="tributeImage"
+                      render={ (message) => <span className="error">{ message }</span> }
+                    />
+                  </section>
 
                   <div className="buttons">
                     <Button

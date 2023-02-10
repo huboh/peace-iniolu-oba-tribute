@@ -1,4 +1,5 @@
 import { AppType } from "next/app";
+import { Toaster } from "react-hot-toast";
 import { Poppins } from "@next/font/google";
 import { StrictMode } from "react";
 
@@ -36,7 +37,14 @@ const App: AppType = (props) => {
   return (
     <StrictMode>
       <ErrorBoundary>
-        <Component { ...{ ...pageProps, className } } />
+        <Component
+          { ...{ ...pageProps, className } }
+        />
+
+        <Toaster
+          position={ "top-center" }
+          containerClassName={ className }
+        />
       </ErrorBoundary>
     </StrictMode>
   );
