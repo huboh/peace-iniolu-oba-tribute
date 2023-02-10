@@ -23,9 +23,10 @@
   }
 
   .tribute-image {
+    min-height: 12rem;
+    max-height: 25rem;
     object-fit: cover;
     object-position: center center;
-    height: 12rem;
   }
 
   .title {
