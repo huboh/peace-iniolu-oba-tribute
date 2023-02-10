@@ -15,6 +15,7 @@ import Section from "@/components/Section";
 import HeroForm from "@/components/HeroForm";
 import Tribute from "@/components/cards/Tribute";
 import HeroSlider from '@/components/HeroSlider';
+import ScrollToTop from "@/components/ScrollToTop";
 
 interface TributesPageProps extends PageProps, Omit<Awaited<ReturnType<typeof getServerSideProps>>["props"], ""> { }
 
@@ -110,6 +111,8 @@ const TributesPage: NextPage<TributesPageProps> = (props) => {
             </Masonry>
           </ResponsiveMasonry>
         </Section>
+
+        <ScrollToTop />
       </main>
     </View >
   );
