@@ -1,6 +1,6 @@
 main {
   .hero {
-    gap: 13rem;
+    gap: 8rem;
     width: 100%;
     height: 100%;
     display: flex;
@@ -45,7 +45,7 @@ main {
     }
 
     @media screen and (min-width: 760px) {
-      gap: 10rem;
+      gap: 9rem;
 
       hgroup {
         margin-bottom: 2rem;
