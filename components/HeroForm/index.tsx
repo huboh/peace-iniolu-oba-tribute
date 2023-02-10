@@ -1,7 +1,7 @@
 import styles from "./hero-form.module.scss";
 
 import { Poppins } from "@next/font/google";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { FC, useState } from "react";
 import { useClassString } from "../../hooks";
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
@@ -37,62 +37,92 @@ const poppins = Poppins({
   ],
 });
 
-const FILE_SIZE = 10485760;
+const FILE_SIZE = 7000000; // 7mb
 const SUPPORTED_FORMATS = [
   "image/jpg",
   "image/jpeg",
   "image/gif",
-  "image/png"
+  "image/png",
+  "image/webp",
+  "image/heic",
+  "image/heif",
 ];
 
+const initialValues = {
+  name: "",
+  email: "",
+  title: "",
+  message: "",
+  phoneNumber: "",
+  relationShip: "",
+  displayImage: null,
+  tributeImage: null
+};
+
 const TributeSchema = Yup.object().shape({
-  name: Yup.string()
+  name: Yup
+    .string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
     .required('name is required'),
 
-  title: Yup.string()
+  title: Yup
+    .string()
     .min(2, 'Too Short!')
     .max(250, 'Too Long!')
-    .required('title is required'),
+    .required('tribute title is required'),
 
-  email: Yup.string()
-    .email('Invalid email'),
+  email: Yup
+    .string()
+    .email('invalid email address'),
 
-  relationShip: Yup.string()
+  phoneNumber: Yup
+    .string()
+    .required("phone number is required")
+    .matches(
+      /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/,
+      "invalid phone number"
+    )
+    .min(11, 'phone number too short!'),
+
+  relationShip: Yup
+    .string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
-    .required('relation is required'),
+    .required('your relationship with peace is required'),
 
-  message: Yup.string()
-    .min(2, 'Too Short!')
-    .max(1050, 'message too long!')
-    .required('message is required'),
+  message: Yup
+    .string()
+    .min(2, 'tribute message is too short!')
+    .max(1050, 'tribute message is too long!')
+    .required('tribute message is required'),
 
-  displayImage: Yup.mixed()
-    .required("profile image is required")
+  displayImage: Yup
+    .mixed()
+    .required("your profile image is required")
     .test(
       "fileSize",
-      "File too large, maximum file size is 10mb",
+      "File too large, maximum file size is 7mb",
       value => value && (value as any).size <= FILE_SIZE
     )
     .test(
       "fileFormat",
-      "Unsupported Format",
+      "Unsupported File format",
       value => value && SUPPORTED_FORMATS.includes((value as any).type)
     ),
 
-  tributeImage: Yup.mixed()
-    .required("tribute image is required")
+  tributeImage: Yup
+    .mixed()
+    .nullable()
     .test(
       "fileSize",
-      "File too large, maximum file size is 10mb",
-      value => value && (value as any).size <= FILE_SIZE
+      "File too large, maximum file size is 7mb",
+      value => !value || (value && (value as any).size <= FILE_SIZE)
     )
     .test(
       "fileFormat",
-      "Unsupported Format",
-      value => value && SUPPORTED_FORMATS.includes((value as any).type)
+      "Unsupported File format",
+      value => !value || (value && SUPPORTED_FORMATS.includes((value as any).type))
     )
 });
 
@@ -101,14 +131,14 @@ const HeroForm: FC<HeroFormProps> = (props) => {
   const [open, setIsOpen] = useState(false);
   const className = useClassString(styles["form-wrapper"], props.className);
 
-  const onSubmit = async (event: any, helpers: FormikHelpers<any>) => {
+  const onSubmit = async (values: (typeof initialValues), helpers: FormikHelpers<(typeof initialValues)>) => {
     const formData = new FormData();
-    const apiRoute = `${process.env.NEXT_PUBLIC_POCKET_BASE_API}/api/collections/tributes/records`;
-    const submitTribute = (data: any) => fetch(apiRoute, { body: data, method: "POST", "Content-Type": 'multipart/form-data' } as any);
+    const endPoint = `${process.env.NEXT_PUBLIC_POCKET_BASE_API}/api/collections/tributes/records`;
+    const submitTribute = (data: FormData) => fetch(endPoint, { body: data, method: "POST", "Content-Type": 'multipart/form-data' } as any);
 
     try {
-      for (const key in event) {
-        formData.append(key, event[key]);
+      for (const key in values) {
+        formData.append(key, values[(key as keyof typeof initialValues)] || "");
       }
 
       const response = await submitTribute(formData);
@@ -120,8 +150,9 @@ const HeroForm: FC<HeroFormProps> = (props) => {
         return helpers.setErrors(errors);
       }
 
-      setIsOpen(false); alert("tribute submitted successfully");
-      router.reload();
+      setIsOpen(false);
+      alert("tribute submitted successfully");
+      router.refresh();
 
     } catch (error) {
       alert("encountered an unexpected error");
@@ -142,15 +173,17 @@ const HeroForm: FC<HeroFormProps> = (props) => {
         <div className={ poppins.className }>
           <Formik
             onSubmit={ onSubmit }
+            initialValues={ initialValues }
             validationSchema={ TributeSchema }
-            initialValues={ { name: "", email: "", title: "", message: "", relationShip: "", displayImage: null, tributeImage: null } as any }
           >
             { ({ setFieldValue, isSubmitting }) => {
               return (
                 <Form className="tribute-form">
                   <Text.Header.H1>Write a Tribute</Text.Header.H1>
 
-                  <label htmlFor="name">Name <span className="required">*</span></label>
+                  <label htmlFor="name">
+                    Name <span className="required">*</span>
+                  </label>
                   <Field
                     id="name"
                     name="name"
@@ -162,19 +195,23 @@ const HeroForm: FC<HeroFormProps> = (props) => {
                     render={ (message) => <span className="error">{ message }</span> }
                   />
 
-                  <label htmlFor="email">Email</label>
+                  <label htmlFor="email">
+                    Email Address
+                  </label>
                   <Field
                     id="email"
                     name="email"
                     type="text"
-                    placeholder="davidItunu16@gmail.com"
+                    placeholder="johndoe6@gmail.com"
                   />
                   <ErrorMessage
                     name="email"
                     render={ (message) => <span className="error">{ message }</span> }
                   />
 
-                  <label htmlFor="phone">Phone Number</label>
+                  <label htmlFor="phone">
+                    Phone Number <span className="required">*</span>
+                  </label>
                   <Field
                     id="phone"
                     name="phoneNumber"
@@ -186,7 +223,9 @@ const HeroForm: FC<HeroFormProps> = (props) => {
                     render={ (message) => <span className="error">{ message }</span> }
                   />
 
-                  <label htmlFor="relationship">Relationship <span className="required">*</span></label>
+                  <label htmlFor="relationship">
+                    Relationship <span className="required">*</span>
+                  </label>
                   <Field
                     id="relationship"
                     name="relationShip"
@@ -198,28 +237,9 @@ const HeroForm: FC<HeroFormProps> = (props) => {
                     render={ (message) => <span className="error">{ message }</span> }
                   />
 
-                  <label htmlFor="title">Tribute Title <span className="required">*</span></label>
-                  <Field
-                    id="title"
-                    name="title" placeholder="In Memory of Peace Iniolu Oba"
-                  />
-                  <ErrorMessage
-                    name="title"
-                    render={ (message) => <span className="error">{ message }</span> }
-                  />
-
-                  <label htmlFor="message">Tribute Message <span className="required">*</span></label>
-                  <Field
-                    id="message"
-                    name="message"
-                    as="textarea" placeholder="tribute message"
-                  />
-                  <ErrorMessage
-                    name="message"
-                    render={ (message) => <span className="error">{ message }</span> }
-                  />
-
-                  <label htmlFor="display-image">Profile Picture <span className="required">*</span></label>
+                  <label htmlFor="display-image">
+                    Profile Picture <span className="required">*</span>
+                  </label>
                   <input
                     id="display-image"
                     name="displayImage"
@@ -231,7 +251,34 @@ const HeroForm: FC<HeroFormProps> = (props) => {
                     render={ (message) => <span className="error">{ message }</span> }
                   />
 
-                  <label htmlFor="display-image">Tribute Image <span className="required">*</span></label>
+                  <label htmlFor="title">
+                    Tribute Header <span className="required">*</span>
+                  </label>
+                  <Field
+                    id="title"
+                    name="title" placeholder="In Memory of Peace Iniolu Oba"
+                  />
+                  <ErrorMessage
+                    name="title"
+                    render={ (message) => <span className="error">{ message }</span> }
+                  />
+
+                  <label htmlFor="message">
+                    Tribute Message <span className="required">*</span>
+                  </label>
+                  <Field
+                    id="message"
+                    name="message"
+                    as="textarea" placeholder="tribute message"
+                  />
+                  <ErrorMessage
+                    name="message"
+                    render={ (message) => <span className="error">{ message }</span> }
+                  />
+
+                  <label htmlFor="display-image">
+                    Tribute Image
+                  </label>
                   <input
                     id="display-image"
                     name="tributeImage"
