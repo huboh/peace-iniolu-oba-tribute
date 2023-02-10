@@ -1,5 +1,8 @@
 import { TbBrandTwitter, TbBrandFacebook, TbBrandInstagram, TbBrandYoutube } from "react-icons/tb";
 
+export const HOME = "/";
+export const POCKETBASE_ENDPOINT = process.env.NEXT_PUBLIC_POCKET_BASE_API;
+
 export const FooterLinks = [
   { label: "home", link: "" },
   { label: "about", link: "" },

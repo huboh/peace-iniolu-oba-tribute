@@ -2,9 +2,9 @@ import styles from "@/styles/home.module.scss";
 
 import { NextPage } from "next";
 import { PageProps } from "@/types";
-import { default as PocketBase } from "pocketbase";
+import { getTributes } from "../lib/tributes";
+import { getSliderImagesPaths } from "@/lib";
 import { PT_Serif, Dancing_Script } from "@next/font/google";
-import { normalizeTribute, getSliderImagesPaths } from "@/lib";
 import { default as Masonry, ResponsiveMasonry } from "react-responsive-masonry";
 
 // components
@@ -58,13 +58,10 @@ const dancingScript = Dancing_Script({
 });
 
 const getServerSideProps = async () => {
-  const images = await getSliderImagesPaths();
-  const client = new PocketBase(process.env.NEXT_PUBLIC_POCKET_BASE_API);
-  const tributes = await client.collection("tributes").getList(1, 100);
-
   return {
     props: {
-      images, tributes: tributes.items.map((record) => normalizeTribute(record, client))
+      tributes: await getTributes(),
+      images: await getSliderImagesPaths(),
     }
   };
 };
@@ -107,7 +104,7 @@ const TributesPage: NextPage<TributesPageProps> = (props) => {
 
           <ResponsiveMasonry columnsCountBreakPoints={ { 350: 1, 760: 2, 1160: 3 } }>
             <Masonry className={ styles["tributes"] }>
-              { props.tributes.map((tribute) => <Tribute key={ tribute.id } tribute={ tribute } />) }
+              { props.tributes.items.map((tribute) => <Tribute key={ tribute.id } tribute={ tribute } />) }
             </Masonry>
           </ResponsiveMasonry>
         </Section>
