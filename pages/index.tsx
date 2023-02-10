@@ -60,7 +60,7 @@ const dancingScript = Dancing_Script({
 const getServerSideProps = async () => {
   const images = await getSliderImagesPaths();
   const client = new PocketBase(process.env.NEXT_PUBLIC_POCKET_BASE_API);
-  const tributes = await client.collection("tributes").getList(1, 20);
+  const tributes = await client.collection("tributes").getList(1, 100);
 
   return {
     props: {
