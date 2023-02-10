@@ -38,7 +38,7 @@ const poppins = Poppins({
 export default function Button(props: ButtonProps) {
   const type = props.type || 'button';
   const [isDisabled, setIsDisabled] = useState(props.disabled);
-  const className = useClassString(styles["button"], poppins.className, props.style, props.className);
+  const className = useClassString(styles["button"], poppins.className, styles[props.style || ""], props.className);
 
   const onClickHandler = async (event: Parameters<NonNullable<typeof props.onClick>>[0]) => {
     if (props.onClick) {

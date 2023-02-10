@@ -26,6 +26,7 @@ export interface Tribute {
   message: string;
   updated: string;
   created: string;
+  phoneNumber: string;
   displayImage: string;
   tributeImage?: string;
   relationShip: string;

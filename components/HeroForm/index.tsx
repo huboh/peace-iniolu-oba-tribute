@@ -291,8 +291,17 @@ const HeroForm: FC<HeroFormProps> = (props) => {
                   />
 
                   <div className="buttons">
-                    <Button label="close" onClick={ () => setIsOpen(false) } disabled={ isSubmitting } />
-                    <Button type="submit" label="submit" disabled={ isSubmitting } />
+                    <Button
+                      label="close"
+                      style="see-through"
+                      onClick={ () => setIsOpen(false) } disabled={ isSubmitting }
+                    />
+                    <Button
+                      type="submit"
+                      label="submit"
+                      disabled={ isSubmitting }
+                      showSpinner={ isSubmitting }
+                    />
                   </div>
                 </Form>
               );
