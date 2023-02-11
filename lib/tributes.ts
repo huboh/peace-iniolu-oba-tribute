@@ -4,7 +4,9 @@ import { Record, default as PocketBase } from "pocketbase";
 
 export const getTributes = async () => {
   const client = new PocketBase(POCKETBASE_ENDPOINT);
-  const tributes = await client.collection("tributes").getList(1, 100);
+  const tributes = await client.collection("tributes").getList(1, 100, {
+    sort: "-created"
+  });
 
   return {
     ...tributes,
