@@ -10,9 +10,9 @@ import styles from "./scroll-to-top.module.scss";
 import useWindowScrollInfo from "../../hooks/useWindowScrollInfo";
 
 const lifeCycleTransitions: Record<string, Variant> = {
-  exit: { y: 50, opacity: 0 },
+  exit: { y: 70, opacity: 0 },
   enter: { y: 0, opacity: 1 },
-  initial: { y: 50, opacity: 0 },
+  initial: { y: 70, opacity: 0 },
 };
 
 const ScrollToTop: FC = () => {
