@@ -35,10 +35,10 @@
   .title {
     font-size: 1.2rem;
     overflow: hidden;
-    line-clamp: 3;
+    line-clamp: 4;
     white-space: normal;
     text-overflow: ellipsis;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     display: -webkit-box !important;
   }
@@ -51,6 +51,7 @@
 
   .message-profile {
     gap: 0.8rem;
+    width: 100%;
     display: flex;
     margin-top: auto;
     align-items: center;
@@ -72,7 +73,7 @@
 
       .name {
         display: flex;
-        align-items: flex-end;
+        align-items: center;
         justify-content: flex-start;
 
         max-width: 100%;
