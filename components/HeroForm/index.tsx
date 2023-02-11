@@ -75,11 +75,11 @@ const TributeSchema = Yup.object().shape({
 
   email: Yup
     .string()
+    .required("email address is required")
     .email('invalid email address'),
 
   phoneNumber: Yup
     .string()
-    .required("phone number is required")
     .matches(
       /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/,
       "invalid phone number"
@@ -220,7 +220,7 @@ const HeroForm: FC<HeroFormProps> = (props) => {
                       render={ (message) => <span className="error">{ message }</span> }
                     />
                     <label htmlFor="email">
-                      Email Address
+                      Email Address <span className="required">*</span>
                     </label>
                     <Field
                       id="email"
@@ -233,7 +233,7 @@ const HeroForm: FC<HeroFormProps> = (props) => {
                       render={ (message) => <span className="error">{ message }</span> }
                     />
                     <label htmlFor="phone">
-                      Phone Number <span className="required">*</span>
+                      Phone Number
                     </label>
                     <Field
                       id="phone"
