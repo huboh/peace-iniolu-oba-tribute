@@ -20,6 +20,7 @@ const Tribute: FC<TributeProps> = (props) => {
     <article className={ className }>
       { tribute.tributeImage && (
         <Image
+          priority
           width={ 500 }
           height={ 500 }
           alt={ tribute.name }
