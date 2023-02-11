@@ -127,6 +127,10 @@ const TributeSchema = Yup.object().shape({
     )
 });
 
+export const wait = (seconds: number) => {
+  return new Promise((resolve) => setTimeout(resolve, seconds * 1000));
+};
+
 const HeroForm: FC<HeroFormProps> = (props) => {
   const router = useRouter();
   const [open, setIsOpen] = useState(false);
@@ -160,18 +164,18 @@ const HeroForm: FC<HeroFormProps> = (props) => {
 
       setIsOpen(false);
 
-      const duration = 4000;
-      const successId = toast.success("tribute submitted successfully", {
+      const duration = 5000;
+      const successId = toast.success("Tribute Submitted Successfully", {
         id: toastId,
         duration: duration
       });
 
-      setTimeout(() => { toast('refreshing page', { id: successId }); router.refresh(); },
-        duration
+      setTimeout(async () => { toast('Refreshing Page', { id: successId }); await wait(2); router.refresh(); },
+        duration - 1000
       );
 
     } catch (error) {
-      toast.error("unexpected error submitting tribute", {
+      toast.error("Unexpected Error Occurred Submitting Tribute", {
         id: toastId,
         duration: 5000
       });
