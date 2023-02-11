@@ -98,15 +98,69 @@ const TributesPage: NextPage<TributesPageProps> = (props) => {
         </HeroSlider>
 
         <Section className={ styles["tributes"] } textAlignment={ "center" }>
-          <Text.Header.H1
-            text="Tributes"
-          />
+          <hgroup className={ styles["section-heading"] }>
+            <Text.Header.H1
+              text="Tributes."
+            />
+            <Text.Paragraph
+              text="showcase of the love and admiration that Peace inspired in her friends and family. Read on to see how Peace touched the lives of those around her and why she will always be remembered with fondness and respect."
+            />
+          </hgroup>
 
           <ResponsiveMasonry columnsCountBreakPoints={ { 350: 1, 760: 2, 1160: 3 } }>
             <Masonry className={ styles["tributes"] }>
               { props.tributes.items.map((tribute) => <Tribute key={ tribute.id } tribute={ tribute } />) }
             </Masonry>
           </ResponsiveMasonry>
+        </Section>
+
+        <Section className={ styles["youtube"] } textAlignment={ "center" }>
+          <hgroup className={ styles["section-heading"] }>
+            <Text.Header.H1
+              text="on-screen memories."
+            />
+            <Text.Paragraph
+              text="We've compiled a selection of Peace's most memorable and impactful videos, showcasing her talent and passion. these videos give us a glimpse into Peace's world and allow us to relive some of her most cherished moments. So sit back, hit play, and join us in celebrating Peace's amazing journey through her videos."
+            />
+          </hgroup>
+
+          <ul>
+            <li>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/0AUdDFRNyxs" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+              <hgroup>
+                <Text.Header
+                  text="songs of the spirit"
+                />
+                <Text.Paragraph
+                  text="By Peace Iniolu Oba"
+                />
+              </hgroup>
+            </li>
+
+            <li>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/0LH9Yjjmriw" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+              <hgroup>
+                <Text.Header
+                  text="Yaweh"
+                />
+                <Text.Paragraph
+                  text="By Peace Iniolu Oba"
+                />
+              </hgroup>
+            </li>
+
+            <li>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/Ft0ehYMuwoc" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+              <hgroup>
+                <Text.Header
+                  text="so good"
+                />
+                <Text.Paragraph
+                  text="By Peace Iniolu Oba"
+                />
+              </hgroup>
+            </li>
+          </ul>
         </Section>
 
         <ScrollToTop />
