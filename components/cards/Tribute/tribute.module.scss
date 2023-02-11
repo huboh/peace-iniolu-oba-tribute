@@ -90,7 +90,7 @@
         }
 
         .time {
-          color: var(--primary-color-txt);
+          color: var(--text-color-grey);
           font-size: 0.73rem;
           max-width: max-content;
           font-weight: 500;
@@ -101,6 +101,7 @@
       }
 
       .relationship {
+        color: var(--primary-color-txt);
         font-size: 0.85rem;
       }
     }
