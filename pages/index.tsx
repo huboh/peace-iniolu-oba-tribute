@@ -73,29 +73,32 @@ const TributesPage: NextPage<TributesPageProps> = (props) => {
         title="Peace Iniolu Oba's Tribute"
       />
       <main>
-        <HeroSlider imagesPaths={ props.images }>
-          <Section className={ styles["hero"] }>
-            <div className={ styles["form"] }>
-              <Text.Paragraph className={ styles["notice"] }>
-                This website is undergoing maintenance and improvements at the moment, however, we invite you to leave a tribute in honor of preserving the legacy of peace.
-              </Text.Paragraph>
-              <HeroForm className={ styles["form"] } />
+        <Section className={ styles["hero"] }>
+          <HeroSlider imagesPaths={ props.images }>
+            <div className={ styles["hero-text"] }>
+              <div className={ styles["form"] }>
+                <Text.Paragraph
+                  className={ styles["notice"] }
+                  text="This website is undergoing maintenance and improvements at the moment, however, we invite you to leave a tribute in honor of preserving the legacy of Peace."
+                />
+                <HeroForm
+                  className={ styles["form"] }
+                />
+              </div>
+              <hgroup>
+                <Text.Header.H1
+                  text="Peace Iniolu Oba."
+                  className={ ptSerif.className }
+                />
+                <Text.Header.H2
+                  size={ "large" }
+                  text={ "1993 - 2023" }
+                  className={ `${styles["lifespan"]} ${dancingScript.className}` }
+                />
+              </hgroup>
             </div>
-
-            <hgroup>
-              <Text.Header.H1
-                text="Peace Iniolu Oba."
-                className={ ptSerif.className }
-              />
-
-              <Text.Header.H2
-                size={ "large" }
-                text={ "1993 - 2023" }
-                className={ `${styles["lifespan"]} ${dancingScript.className}` }
-              />
-            </hgroup>
-          </Section>
-        </HeroSlider>
+          </HeroSlider>
+        </Section>
 
         <Section className={ styles["tributes"] } textAlignment={ "center" }>
           <hgroup className={ styles["section-heading"] }>
@@ -120,13 +123,21 @@ const TributesPage: NextPage<TributesPageProps> = (props) => {
               text="on-screen memories."
             />
             <Text.Paragraph
-              text="We've compiled a selection of Peace's most memorable and impactful videos, showcasing her talent and passion. these videos give us a glimpse into Peace's world and allow us to relive some of her most cherished moments. So sit back, hit play, and join us in celebrating Peace's amazing journey through her videos."
+              text="Here is a little compilation of some memorable moments on youtube showcasing her talents and passion, these videos give us a glimpse into Peace's world and allow us to relive some of her cherished moments."
             />
           </hgroup>
 
           <ul>
             <li>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/0AUdDFRNyxs" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+              <iframe
+                src="https://www.youtube.com/embed/0AUdDFRNyxs"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                width="560"
+                height="315"
+                title="YouTube video player"
+                frameBorder="0"
+                allowFullScreen
+              />
               <hgroup>
                 <Text.Header
                   text="songs of the spirit"
@@ -138,7 +149,15 @@ const TributesPage: NextPage<TributesPageProps> = (props) => {
             </li>
 
             <li>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/0LH9Yjjmriw" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+              <iframe
+                src="https://www.youtube.com/embed/0LH9Yjjmriw"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                width="560"
+                height="315"
+                title="YouTube video player"
+                frameBorder="0"
+                allowFullScreen
+              />
               <hgroup>
                 <Text.Header
                   text="Yaweh"
@@ -150,7 +169,15 @@ const TributesPage: NextPage<TributesPageProps> = (props) => {
             </li>
 
             <li>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/Ft0ehYMuwoc" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+              <iframe
+                src="https://www.youtube.com/embed/Ft0ehYMuwoc"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                width="560"
+                height="315"
+                title="YouTube video player"
+                frameBorder="0"
+                allowFullScreen
+              />
               <hgroup>
                 <Text.Header
                   text="so good"
