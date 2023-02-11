@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Tribute } from "@/types";
 import { useClassString } from "@/hooks";
 
+import Moment from "react-moment";
 import Text from "@/components/Text";
 import Image from "@/components/Image";
 import styles from "./tribute.module.scss";
@@ -16,7 +17,7 @@ const Tribute: FC<TributeProps> = (props) => {
   const className = useClassString(styles["tribute"], props.className);
 
   return (
-    <div className={ className }>
+    <article className={ className }>
       { tribute.tributeImage && (
         <Image
           width={ 500 }
@@ -32,18 +33,25 @@ const Tribute: FC<TributeProps> = (props) => {
 
       <div className={ styles["message-profile"] }>
         <Image
-          width={ 500 }
-          height={ 500 }
+          width={ 200 }
+          height={ 200 }
           alt={ tribute.name }
           src={ tribute.displayImage }
           className={ styles["display-image"] }
         />
         <div>
-          <Text.Header text={ tribute.name } className={ styles["name"] } />
-          <Text.Paragraph text={ tribute.relationShip } className={ styles["relationship"] } />
+          <Text.Header className={ styles["name"] }>
+            <span className={ styles["text"] }>{ tribute.name }</span>
+            <span className={ styles["time"] }><Moment fromNow={ true }>{ tribute.created }</Moment></span>
+          </Text.Header>
+
+          <Text.Paragraph
+            text={ tribute.relationShip }
+            className={ styles["relationship"] }
+          />
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

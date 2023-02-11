@@ -8,13 +8,13 @@
   border: none;
   padding: 0.8em;
   border-radius: var(--border-radius-min);
-  background-color: var(--primary-color-light);
+  background-color: var(--primary-color);
 
   svg {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     stroke-width: 1px;
-    fill: var(--primary-color);
-    stroke: var(--primary-color);
+    fill: var(--background-color);
+    stroke: var(--background-color);
   }
 
   &:focus,
@@ -28,7 +28,7 @@
 
   @media screen and (min-width: 760px) {
     svg {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
     }
   }
 }
