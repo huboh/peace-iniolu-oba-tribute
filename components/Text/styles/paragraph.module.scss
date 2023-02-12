@@ -3,6 +3,10 @@
   font-weight: 500;
   color: var(--text-color-grey);
 
+  &:not(:last-of-type) {
+    margin-bottom: 1em;
+  }
+
   &.extra-small {
     font-size: 0.75rem;
   }

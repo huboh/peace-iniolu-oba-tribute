@@ -1,8 +1,10 @@
 import styles from "@/styles/home.module.scss";
+import linkStyles from "@/components/Text/styles/link.module.scss";
+import PeaceObaImage from "@/public/assets/images/from-glory-to-glory.png";
 
 import { NextPage } from "next";
 import { PageProps } from "@/types";
-import { getTributes } from "../lib/tributes";
+import { getTributes } from "@/lib/tributes";
 import { getSliderImagesPaths } from "@/lib";
 import { PT_Serif, Dancing_Script } from "@next/font/google";
 import { default as Masonry, ResponsiveMasonry } from "react-responsive-masonry";
@@ -11,6 +13,7 @@ import { default as Masonry, ResponsiveMasonry } from "react-responsive-masonry"
 import Seo from '@/components/Seo';
 import Text from '@/components/Text';
 import View from '@/components/View';
+import Image from "@/components/Image";
 import Section from "@/components/Section";
 import HeroForm from "@/components/HeroForm";
 import Tribute from "@/components/cards/Tribute";
@@ -100,10 +103,59 @@ const TributesPage: NextPage<TributesPageProps> = (props) => {
           </HeroSlider>
         </Section>
 
+        <Section className={ styles["about"] }>
+          <Text.Header.H1
+            text="About Peace."
+          />
+
+          <section className={ styles["about-wrapper"] }>
+            <Image
+              src={ PeaceObaImage }
+              alt={ "peace iniolu oba" }
+              priority={ true }
+              placeholder={ "blur" }
+              className={ styles["about-img"] }
+            />
+            <Text.Paragraph>
+              Peace Iniolu Oba was a gifted songwriter, recording artist, and worship minister with a passion for leading people in powerful, Spirit-filled worship experiences. With a mandate to reunite the saints of God and prepare them for the soon-coming king, Jesus, she made a significant impact in the gospel music industry with her soul-stirring voice and anointed songs.
+            </Text.Paragraph>
+            <Text.Paragraph>
+              Her debut album, <a
+                rel="noreferrer"
+                href="https://kingdomboiz.com/peace-iniolu-releases-her-debut-album-for-free-download-my-king/"
+                target="_blank"
+                className={ `${linkStyles["link"]} ${styles["link"]}` }
+              >
+                &quot;My King&quot;
+              </a> released in 2015, was a testament to her talent and her unwavering commitment to spreading the gospel of Jesus Christ through music. The album received widespread critical acclaim and featured the hit single <a
+                rel="noreferrer"
+                href="https://youtu.be/0AUdDFRNyxs"
+                target="_blank"
+                className={ `${linkStyles["link"]} ${styles["link"]}` }
+              >
+                &quot;Songs of the Spirit&quot;
+              </a> which further solidified her place in the gospel music scene.
+            </Text.Paragraph>
+            <Text.Paragraph>
+              Aside from her music career, Peace Iniolu Oba was a happily married woman, blessed with an amazing daughter, and the proud wife of <a
+                rel="noreferrer"
+                href="https://instagram.com/mrgbengaoba?igshid=YmMyMTA2M2Y="
+                target="_blank"
+                className={ `${linkStyles["link"]} ${styles["link"]}` }
+              >
+                Pastor Gbenga Oba.
+              </a> She was a true servant of God, using her gifts and talents to bring glory to His name and to touch the lives of those she encountered.
+            </Text.Paragraph>
+            <Text.Paragraph>
+              Overall, Peace Iniolu Oba was a shining example of what it means to live a life dedicated to God and to use one&apos;s talents for His kingdom. Her music, her worship, and her testimony inspired and uplifted all who had the privilege of encountering her.
+            </Text.Paragraph>
+          </section>
+        </Section>
+
         <Section className={ styles["tributes"] } textAlignment={ "center" }>
           <hgroup className={ styles["section-heading"] }>
             <Text.Header.H1
-              text="Tributes."
+              text="Wall of Tributes."
             />
             <Text.Paragraph
               text="showcase of the love and admiration that Peace inspired in her friends and family. Read on to see how Peace touched the lives of those around her and why she will always be remembered with fondness and respect."
