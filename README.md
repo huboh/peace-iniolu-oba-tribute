@@ -1,5 +1,7 @@
 # Peace Iniolu Oba's Tribute Website
 
+<img src="./public/assets/images/cover.jpg" alt="Peace Iniolu Oba" title="Peace Iniolu Oba" style="border-radius: 10px; max-width: 1024px" />
+
 This repo contains source code for the tribute website to Peace Iniolu Oba, honoring their life and legacy.
 
 ## Getting Started
