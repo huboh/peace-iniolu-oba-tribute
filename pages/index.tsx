@@ -105,7 +105,7 @@ const TributesPage: NextPage<TributesPageProps> = (props) => {
 
         <Section className={ styles["about"] }>
           <Text.Header.H1
-            text="About Peace."
+            text="About Peace"
           />
 
           <section className={ styles["about-wrapper"] }>
@@ -155,7 +155,7 @@ const TributesPage: NextPage<TributesPageProps> = (props) => {
         <Section className={ styles["tributes"] } textAlignment={ "center" }>
           <hgroup className={ styles["section-heading"] }>
             <Text.Header.H1
-              text="Wall of Tributes."
+              text="Wall of Tributes"
             />
             <Text.Paragraph
               text="showcase of the love and admiration that Peace inspired in her friends and family. Read on to see how Peace touched the lives of those around her and why she will always be remembered with fondness and respect."
@@ -172,7 +172,7 @@ const TributesPage: NextPage<TributesPageProps> = (props) => {
         <Section className={ styles["youtube"] } textAlignment={ "center" }>
           <hgroup className={ styles["section-heading"] }>
             <Text.Header.H1
-              text="on-screen memories."
+              text="on-screen memories"
             />
             <Text.Paragraph
               text="Here is a little compilation of some memorable moments on youtube showcasing her talents and passion, these videos give us a glimpse into Peace's world and allow us to relive some of her cherished moments."
