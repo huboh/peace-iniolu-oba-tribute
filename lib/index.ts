@@ -3,7 +3,7 @@ import { SiteData } from "@/types";
 import { readFile, readdir } from "fs/promises";
 
 export const getSiteData = async (directory?: string): Promise<SiteData> => {
-  return JSON.parse(await readFile(join(directory || process.cwd(), "/data/index.json"), { encoding: "utf-8" })) ?? [];
+  return JSON.parse(await readFile(join(directory || process.cwd(), "data/index.json"), { encoding: "utf-8" })) ?? [];
 };
 
 export const getSliderImagesPaths = async () => {
