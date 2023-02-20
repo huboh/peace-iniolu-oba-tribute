@@ -5,17 +5,19 @@ import PeaceObaImage from "@/public/assets/images/from-glory-to-glory.png";
 import { NextPage } from "next";
 import { PageProps } from "@/types";
 import { getTributes } from "@/lib/tributes";
-import { getSliderImagesPaths } from "@/lib";
 import { PT_Serif, Dancing_Script } from "@next/font/google";
+import { getSliderImagesPaths, getSiteData } from "@/lib";
 import { default as Masonry, ResponsiveMasonry } from "react-responsive-masonry";
 
 // components
 import Seo from '@/components/Seo';
 import Text from '@/components/Text';
 import View from '@/components/View';
+import List from '@/components/List';
 import Image from "@/components/Image";
 import Section from "@/components/Section";
 import HeroForm from "@/components/HeroForm";
+import Video from "@/components/cards/Video";
 import Tribute from "@/components/cards/Tribute";
 import HeroSlider from '@/components/HeroSlider';
 import ScrollToTop from "@/components/ScrollToTop";
@@ -61,10 +63,17 @@ const dancingScript = Dancing_Script({
 });
 
 const getServerSideProps = async () => {
+  const [images, tributes, { videos }] = await Promise.all([
+    getSliderImagesPaths(),
+    getTributes(),
+    getSiteData()
+  ]);
+
   return {
     props: {
-      tributes: await getTributes(),
-      images: await getSliderImagesPaths(),
+      videos,
+      images,
+      tributes,
     }
   };
 };
@@ -152,6 +161,23 @@ const TributesPage: NextPage<TributesPageProps> = (props) => {
           </section>
         </Section>
 
+        <Section className={ styles["youtube"] } textAlignment={ "center" }>
+          <hgroup className={ styles["section-heading"] }>
+            <Text.Header.H1
+              text="on-screen memories"
+            />
+            <Text.Paragraph
+              text="Here is a little compilation of some memorable moments on youtube showcasing her talents and passion, these videos give us a glimpse into Peace's world and allow us to relive some of her cherished moments."
+            />
+          </hgroup>
+
+          <List
+            key_={ "link" }
+            items={ props.videos }
+            render={ (video) => <Video video={ video } /> }
+          />
+        </Section>
+
         <Section className={ styles["tributes"] } textAlignment={ "center" }>
           <hgroup className={ styles["section-heading"] }>
             <Text.Header.H1
@@ -167,79 +193,6 @@ const TributesPage: NextPage<TributesPageProps> = (props) => {
               { props.tributes.items.map((tribute) => <Tribute key={ tribute.id } tribute={ tribute } />) }
             </Masonry>
           </ResponsiveMasonry>
-        </Section>
-
-        <Section className={ styles["youtube"] } textAlignment={ "center" }>
-          <hgroup className={ styles["section-heading"] }>
-            <Text.Header.H1
-              text="on-screen memories"
-            />
-            <Text.Paragraph
-              text="Here is a little compilation of some memorable moments on youtube showcasing her talents and passion, these videos give us a glimpse into Peace's world and allow us to relive some of her cherished moments."
-            />
-          </hgroup>
-
-          <ul>
-            <li>
-              <iframe
-                src="https://www.youtube.com/embed/0AUdDFRNyxs"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                width="560"
-                height="315"
-                title="YouTube video player"
-                frameBorder="0"
-                allowFullScreen
-              />
-              <hgroup>
-                <Text.Header
-                  text="songs of the spirit"
-                />
-                <Text.Paragraph
-                  text="By Peace Iniolu Oba"
-                />
-              </hgroup>
-            </li>
-
-            <li>
-              <iframe
-                src="https://www.youtube.com/embed/0LH9Yjjmriw"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                width="560"
-                height="315"
-                title="YouTube video player"
-                frameBorder="0"
-                allowFullScreen
-              />
-              <hgroup>
-                <Text.Header
-                  text="Yaweh"
-                />
-                <Text.Paragraph
-                  text="By Peace Iniolu Oba"
-                />
-              </hgroup>
-            </li>
-
-            <li>
-              <iframe
-                src="https://www.youtube.com/embed/Ft0ehYMuwoc"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                width="560"
-                height="315"
-                title="YouTube video player"
-                frameBorder="0"
-                allowFullScreen
-              />
-              <hgroup>
-                <Text.Header
-                  text="so good"
-                />
-                <Text.Paragraph
-                  text="By Peace Iniolu Oba"
-                />
-              </hgroup>
-            </li>
-          </ul>
         </Section>
 
         <ScrollToTop />

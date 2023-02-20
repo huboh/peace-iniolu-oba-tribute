@@ -1,4 +1,27 @@
 {
+  "videos": [
+    {
+      "link": "https://www.youtube.com/embed/o6qoTjr6tas",
+      "title": "Yahweh",
+      "isPremiered": true,
+      "publishedAt": "03/17/2023",
+      "description": "Yahweh is a song birthed from deep intimacy  with God, Yahweh  is a song of surrender-ness to God and His will, it tells how yielded we should be to God as His Saints."
+    },
+    {
+      "link": "https://www.youtube.com/embed/0AUdDFRNyxs",
+      "title": "songs of the spirit",
+      "isPremiered": false,
+      "publishedAt": "10/22/2021",
+      "description": "Songs of the Spirit is a song birthed from intimacy with God Songs of the Spirit tells us how Great and Mighty God is and how the heavens worship Him day and night."
+    },
+    {
+      "link": "https://www.youtube.com/embed/y8stqpaOYHg",
+      "title": "Tobi Lo ba",
+      "isPremiered": false,
+      "publishedAt": "06/18/2020",
+      "description": "Tobi lo ba is a song that tells how good God his, Peace Iniolu is a minstrel whose mandate is to tell the world about the coming of the KING."
+    }
+  ],
   "programmes": [
     {
       "date": "10/02/2023",

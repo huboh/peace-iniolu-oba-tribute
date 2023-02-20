@@ -11,6 +11,14 @@ export interface PageProps {
   className: string;
 }
 
+export interface Video {
+  link: string;
+  title: string;
+  publishedAt: string;
+  description: string;
+  isPremiered: boolean;
+}
+
 export interface Programme {
   date: string;
   title: string;
@@ -33,5 +41,6 @@ export interface Tribute {
 }
 
 export interface SiteData {
+  videos: Video[];
   programmes: Programme[];
 }
