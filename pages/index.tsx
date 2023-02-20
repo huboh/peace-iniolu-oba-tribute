@@ -88,16 +88,11 @@ const TributesPage: NextPage<TributesPageProps> = (props) => {
         <Section className={ styles["hero"] }>
           <HeroSlider imagesPaths={ props.images }>
             <div className={ styles["hero-text"] }>
-              <div className={ styles["form"] }>
-                <Text.Paragraph
-                  className={ styles["notice"] }
-                  text="This website is undergoing maintenance and improvements at the moment, however, we invite you to leave a tribute in honor of preserving the legacy of Peace."
-                />
-                <HeroForm
-                  className={ styles["form"] }
-                />
-              </div>
+              <HeroForm
+                className={ styles["form"] }
+              />
               <hgroup>
+                <span className={ dancingScript.className }>in memory of</span>
                 <Text.Header.H1
                   text="Peace Iniolu Oba."
                   className={ ptSerif.className }
