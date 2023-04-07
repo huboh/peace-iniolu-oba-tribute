@@ -11,85 +11,83 @@ const Seo: FC<SeoProps> = (props) => {
       title={ title }
       canonical={ props.canonical }
       description={ props.description }
-      additionalMetaTags={ [
-        ...(props.additionalMetaTags || []),
-        {
-          name: "twitter:image",
-          content: props.ogImage!,
-        },
-        {
-          name: "twitter:image:src",
-          content: props.ogImage!,
-        },
-        {
-          name: "twitter:image:alt",
-          content: props.ogAlt!,
-        },
-        {
-          name: "msapplication-config",
-          content: "/favicon/browserconfig.xml",
-        }
-      ]
+      additionalMetaTags={
+        [
+          ...(
+            props.additionalMetaTags || []
+          ),
+          ...[
+            {
+              name: "msapplication-config",
+              content: "/favicon/browserconfig.xml",
+            }
+          ]
+        ]
       }
-      additionalLinkTags={ [
-        ...(props.additionalLinkTags || []),
-        ...[
-          {
-            rel: "manifest",
-            href: "/manifest.json",
-          },
-          {
-            rel: "shortcut icon",
-            href: "/favicon.ico"
-          },
-          {
-            rel: "canonical",
-            href: (props.canonical ?? props.domain)!,
-          },
-          {
-            rel: "apple-touch-icon",
-            sizes: "180x180",
-            href: "/assets/images/apple-touch-icon.png",
-          },
-          {
-            rel: "icon",
-            type: "image/png",
-            sizes: "16x16",
-            href: "/assets/images/favicon-16x16.png",
-          },
-          {
-            rel: "icon",
-            type: "image/png",
-            sizes: "32x32",
-            href: "/assets/images/favicon-32x32.png",
-          }
+      additionalLinkTags={
+        [
+          ...(
+            props.additionalLinkTags || []
+          ),
+          ...[
+            {
+              rel: "manifest",
+              href: "/manifest.json",
+            },
+            {
+              rel: "shortcut icon",
+              href: "/favicon.ico"
+            },
+            {
+              rel: "apple-touch-icon",
+              sizes: "180x180",
+              href: "/assets/images/apple-touch-icon.png",
+            },
+            {
+              rel: "icon",
+              type: "image/png",
+              sizes: "16x16",
+              href: "/assets/images/favicon-16x16.png",
+            },
+            {
+              rel: "icon",
+              type: "image/png",
+              sizes: "32x32",
+              href: "/assets/images/favicon-32x32.png",
+            }
+          ]
         ]
-      ] }
-      twitter={ {
-        ...(props.twitter ?? {}),
-        site: props.twitterHandle,
-        handle: props.twitterHandle,
-        cardType: 'summary_large_image',
-      } }
-      openGraph={ {
-        ...(props.openGraph ?? {}),
-        url: props.url ?? props.canonical ?? props.domain,
-        type: props.ogType,
-        title: props.title,
-        locale: props.ogLocale,
-        siteName: props.siteName,
-        description: props.description,
-        images: [
-          {
-            alt: props.ogAlt ?? props.title,
-            url: props.ogImage!,
-            width: props.ogWidth ?? 850,
-            height: props.ogHeight ?? 650,
-            secureUrl: props.ogImage!,
-            type: props.ogImageType
-          }
-        ]
-      } }
+      }
+      twitter={
+        {
+          ...(props.twitter ?? {}),
+          site: props.twitterHandle,
+          handle: props.twitterHandle,
+          cardType: 'summary_large_image',
+        }
+      }
+      openGraph={
+        {
+          ...(props.openGraph ?? {}),
+          url: props.url ?? props.canonical ?? props.domain,
+          type: props.ogType,
+          title: props.title,
+          locale: props.ogLocale,
+          siteName: props.siteName,
+          description: props.description,
+          images: [
+            {
+              ...(props.openGraph?.images?.[0] ?? {}),
+              alt: props.ogAlt ?? props.title,
+              url: props.ogImage!,
+              width: props.ogWidth ?? 850,
+              height: props.ogHeight ?? 650,
+              secureUrl: props.ogImage!,
+              type: props.ogImageType,
+            }
+          ]
+        }
+      }
     />
   );
 };
