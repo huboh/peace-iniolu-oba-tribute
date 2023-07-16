@@ -9,7 +9,10 @@
 /coverage
 
 .env
-/pb_data
+
+# pocketbase
+*pb_data
+*pocketbase.exe
 
 # next.js
 /.next/

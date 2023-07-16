@@ -6,7 +6,7 @@ kill_timeout = 5
 processes = []
 
 [build]
-  image = "huboh/pocketbase:latest"
+  image = "huboh/pocketbase:peace"
 
 [env]
 
