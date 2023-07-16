@@ -2,7 +2,7 @@ FROM alpine:3 as downloader
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION=0.12.2
+ARG VERSION=0.16.5
 
 ENV BUILDX_ARCH="${TARGETOS:-linux}_${TARGETARCH:-amd64}"
 
@@ -23,4 +23,8 @@ FROM scratch
 EXPOSE 8090
 
 COPY --from=downloader /pocketbase /pb/pocketbase
+
+# local changes should reflect
+COPY /pb_migrations /pb/pb_migrations
+
 CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8090"]
