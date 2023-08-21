@@ -9,6 +9,15 @@ const nextConfig = {
       }
     ];
   },
+  async redirects() {
+    return [
+      {
+        destination: '/maintenance',
+        permanent: false,
+        source: '/'
+      }
+    ];
+  },
   images: {
     domains: [
       'peace-inioluola-tribute.fly.dev'
